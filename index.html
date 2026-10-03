@@ -30,16 +30,9 @@ button,select,input{font:inherit;color:inherit}
 .logo{font-family:var(--f-display);font-weight:900;font-size:24px;letter-spacing:-.5px}
 .logo b{color:var(--yellow);font-weight:900}
 .asof{font-family:var(--f-num);font-size:11px;color:var(--muted);text-align:right}
-.chips{display:flex;gap:6px;overflow-x:auto;margin:12px -16px 0;padding:0 16px 2px;scrollbar-width:none}
-.chips::-webkit-scrollbar{display:none}
-.chip{flex:0 0 auto;background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:7px 12px;font-size:12.5px;font-weight:700;color:inherit;cursor:pointer;white-space:nowrap}
-.chip b{font-family:var(--f-num);font-weight:500;color:var(--muted);margin-left:5px}
-.chip.on{background:var(--yellow);border-color:var(--yellow);color:var(--ink)}
-.chip.on b{color:var(--ink)}
 .kat{display:block;font-size:10.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--yellow);margin-bottom:2px}
 .hot .kat{color:var(--ink);opacity:.7}
-.filters{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:8px}
-.filters .sel:first-child{display:none}
+.filters{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;margin-top:12px}
 .sel{position:relative}
 .sel select{appearance:none;width:100%;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:9px 26px 9px 10px;font-size:12.5px;font-weight:700;cursor:pointer}
 .sel::after{content:"";position:absolute;right:10px;top:50%;width:6px;height:6px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:translateY(-70%) rotate(45deg);pointer-events:none}
@@ -117,7 +110,6 @@ tr.best td.p a{color:var(--good)}
       <div class="logo">ALL<b>SKIDKA</b></div>
       <div class="asof" id="asof"></div>
     </div>
-    <div class="chips" id="chips" role="tablist" aria-label="Kategoriya"></div>
     <div class="filters">
       <div class="sel"><select id="f-cat" aria-label="Kategoriya"><option value="">Barcha kategoriyalar</option></select></div>
       <div class="sel"><select id="f-brand" aria-label="Brend"><option value="">Brend</option></select></div>
@@ -165,12 +157,7 @@ const inCat = x => !$('#f-cat').value || x.cat===$('#f-cat').value;
 const CATN = Object.fromEntries(DATA.cats||[]);
 const KAT = {smartfon:'Smartfon',televizor:'Televizor',muzlatgich:'Muzlatgich',konditsioner:'Konditsioner',kir_yuvish:'Kir yuvish mashinasi',noutbuk:'Noutbuk'};
 const katLabel = x => KAT[x.cat] || CATN[x.cat] || '';
-function renderChips(){
-  const cur=$('#f-cat').value, n=k=>allDeals.filter(x=>!k||x.cat===k).length;
-  $('#chips').innerHTML = [['','Barchasi'],...(DATA.cats||[])].map(([k,t])=>
-    `<button type="button" class="chip ${cur===k?'on':''}" data-cat="${k}" role="tab" aria-selected="${cur===k}">${t}<b>${n(k)}</b></button>`).join('');
-}
-$('#chips').addEventListener('click',e=>{const c=e.target.closest('[data-cat]'); if(!c) return; e.stopPropagation(); $('#f-cat').value=c.dataset.cat; shown=10; render();});
+
 $('#foot-stores').textContent = DATA.stores.join(', ');
 for (const s of DATA.stores){ const o=document.createElement('option'); o.value=s; o.textContent=s; $('#f-store').append(o); }
 const brands = [...new Set(items.map(x=>x.brand))].sort();
@@ -221,7 +208,7 @@ function render(){
   $('#list-title').textContent = active ? `Topildi: ${f.length} ta model` : 'Barcha chegirmalar';
   $('#list').innerHTML = f.length ? f.slice(0,shown).map(row).join('') : '<div class="empty">Bu filtrlar bo\'yicha model topilmadi. Filtrni o\'zgartiring yoki "Tozalash"ni bosing.</div>';
   $('#more').hidden = f.length<=shown;
-  renderStrip(); renderChips();
+  renderStrip();
   for (const id of ['f-cat','f-brand','f-price','f-store']) $('#'+id).classList.toggle('on', !!$('#'+id).value);
 }
 ['f-cat','f-brand','f-price','f-store'].forEach(id=>$('#'+id).addEventListener('change',()=>{shown=10;render()}));
