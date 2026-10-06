@@ -67,7 +67,10 @@ h2{font-family:var(--f-display);font-weight:800;font-size:13px;letter-spacing:.1
 .badge{display:inline-block;font-family:var(--f-num);font-weight:700;font-size:11px;background:var(--yellow);color:var(--ink);border-radius:6px;padding:1px 6px;margin-top:3px}
 .badge.zero{background:var(--panel);color:var(--muted)}
 .empty{padding:40px 0;text-align:center;color:var(--muted)}
-.more{margin:16px auto 0;display:block;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 18px;font-weight:700;cursor:pointer}
+.pager{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:16px}
+.pager[hidden]{display:none}.pager .pg{font-size:12px;color:var(--muted);font-family:var(--f-num)}
+.more[hidden]{display:none}
+.more{margin:0;display:block;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 18px;font-weight:700;cursor:pointer}
 
 .hist{margin:14px 0 6px;background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:14px;padding:10px 12px 8px}
 .hist-h{display:flex;justify-content:space-between;gap:8px;font-size:12px;font-weight:700;color:var(--muted);margin-bottom:4px}
@@ -132,7 +135,11 @@ tr.best td.p a{color:var(--good)}
 
   <h2 id="list-title">Barcha chegirmalar</h2>
   <div class="list" id="list"></div>
-  <button class="more" id="more" type="button" hidden>Yana ko'rsatish</button>
+  <div class="pager" id="pager" hidden>
+    <button class="more" id="prev" type="button">← Oldingi</button>
+    <span class="pg" id="pg"></span>
+    <button class="more" id="more" type="button">Yana ko'rsatish →</button>
+  </div>
 
   <p class="foot">Narxlar har kuni <span id="foot-stores"></span> saytlaridan yig'iladi. "−%" — shu model uchun keyingi eng arzon do'kondan qancha arzonligi. Narxlar <span id="foot-date"></span> holatiga.</p>
 </div>
@@ -181,7 +188,7 @@ function hotCard(x){
 }
 function renderStrip(){ $('#strip').innerHTML = deals.filter(inCat).slice(0,8).map(hotCard).join(''); }
 
-let shown = 10;
+const PER = 10; let page = 0;   // har sahifada 10 ta; "Yana ko'rsatish" keyingi 10 tasini ko'rsatadi
 function filtered(){
   const q=$('#q').value.trim().toLowerCase(), br=$('#f-brand').value, pr=$('#f-price').value, st=$('#f-store').value;
   let base = (q||br||pr||st) ? items : deals;
@@ -207,19 +214,23 @@ function render(){
   const f=filtered(), active=$('#q').value||$('#f-brand').value||$('#f-price').value||$('#f-store').value;
   $('#top-sec').hidden = !!active;
   $('#list-title').textContent = active ? `Topildi: ${f.length} ta model` : 'Barcha chegirmalar';
-  $('#list').innerHTML = f.length ? f.slice(0,shown).map(row).join('') : '<div class="empty">Bu filtrlar bo\'yicha model topilmadi. Filtrni o\'zgartiring yoki "Tozalash"ni bosing.</div>';
-  $('#more').hidden = f.length<=shown;
+  const pages = Math.ceil(f.length / PER); if (page >= pages) page = Math.max(0, pages - 1);
+  $('#list').innerHTML = f.length ? f.slice(page*PER, page*PER+PER).map(row).join('') : '<div class="empty">Bu filtrlar bo\'yicha model topilmadi. Filtrni o\'zgartiring yoki "Tozalash"ni bosing.</div>';
+  $('#pager').hidden = pages <= 1;
+  $('#prev').hidden = page === 0; $('#more').hidden = page >= pages - 1;
+  $('#pg').textContent = f.length ? `${page*PER+1}–${Math.min(f.length,(page+1)*PER)} / ${f.length}` : '';
   renderStrip();
   for (const id of ['f-cat','f-brand','f-price','f-store']) $('#'+id).classList.toggle('on', !!$('#'+id).value);
 }
-['f-cat','f-brand','f-price','f-store'].forEach(id=>$('#'+id).addEventListener('change',()=>{shown=10;render()}));
-$('#q').addEventListener('input',()=>{shown=10;render()});
-$('#reset').addEventListener('click',()=>{$('#q').value='';$('#f-brand').value='';$('#f-price').value='';$('#f-store').value='';$('#f-cat').value='';shown=10;render()});
+['f-cat','f-brand','f-price','f-store'].forEach(id=>$('#'+id).addEventListener('change',()=>{page=0;render()}));
+$('#q').addEventListener('input',()=>{page=0;render()});
+$('#reset').addEventListener('click',()=>{$('#q').value='';$('#f-brand').value='';$('#f-price').value='';$('#f-store').value='';$('#f-cat').value='';page=0;render()});
 // "Yana ko'rsatish": ro'yxatni qayta chizmaydi - faqat keyingi 10 tasini oxiriga qo'shadi
-$('#more').addEventListener('click',()=>{
-  const f=filtered(); $('#list').insertAdjacentHTML('beforeend', f.slice(shown,shown+10).map(row).join(''));
-  shown+=10; $('#more').hidden = f.length<=shown;
-});
+function goPage(d){ page+=d; render();
+  const top=document.querySelector('.top'), y=$('#list-title').getBoundingClientRect().top+scrollY-(top?top.offsetHeight:0)-8;
+  window.scrollTo({top:y,behavior:'smooth'}); }
+$('#more').addEventListener('click',()=>goPage(1));   // keyingi 10 ta (oldingilar o'rniga)
+$('#prev').addEventListener('click',()=>goPage(-1));
 
 function openSheet(sku){
   const x=items.find(i=>i.sku===sku); if(!x) return;
