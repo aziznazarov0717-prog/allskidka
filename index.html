@@ -105,12 +105,55 @@ tr.best td.p a{color:var(--good)}
 .toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--paper);color:var(--ink);padding:10px 16px;border-radius:10px;font-weight:700;font-size:13px;z-index:30;max-width:90%}
 .foot{margin-top:28px;font-size:11.5px;color:var(--muted);line-height:1.5}
 @media (prefers-reduced-motion:no-preference){.sheet{animation:up .22s ease-out}@keyframes up{from{transform:translateY(40px);opacity:.4}}}
+
+/* ===== Kompyuter (keng ekran): bir xil sahifa, kengroq joylashuv. Telefon va Telegram'da o'zgarmaydi. ===== */
+.links{display:none}
+.sheet-x{display:none;position:absolute;top:14px;right:16px;background:none;border:0;color:var(--muted);font-size:26px;line-height:1;cursor:pointer}
+@media (min-width:900px){
+  body{font-size:15px}
+  .wrap{max-width:1200px;padding-inline:32px}
+  .top{margin-inline:-32px;padding-inline:32px;display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);column-gap:8px;align-items:end;padding-block:18px 14px}
+  .brandrow{grid-column:1/-1;align-items:center}
+  .logo{font-size:30px}
+  .links{display:flex;gap:8px;margin-left:auto;margin-right:18px}
+  .links a{text-decoration:none;font-weight:800;font-size:13px;border:1px solid var(--line);border-radius:10px;padding:8px 14px}
+  .links a.main{background:var(--yellow);color:var(--ink);border-color:var(--yellow)}
+  .links a:hover{border-color:var(--yellow)}
+  .filters{grid-template-columns:repeat(4,minmax(0,1fr));margin-top:14px}
+  .row2{margin-top:14px}
+  .stats{gap:48px;margin-top:26px;font-size:13px}
+  .stats strong{font-size:26px}
+  h2{font-size:14px;margin:34px 0 14px}
+  .strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;overflow:visible;margin-inline:0;padding-inline:0;padding-bottom:0}
+  .hot{padding:18px;transition:transform .12s}
+  .hot:hover{transform:translateY(-3px)}
+  .hot .pct{font-size:36px}
+  .list{display:grid;grid-template-columns:1fr 1fr;column-gap:32px}
+  .item{grid-template-columns:64px 1fr auto;padding-block:14px}
+  .item:hover .nm{color:var(--yellow)}
+  .mono{width:64px;height:64px}
+  .mid .nm{font-size:15px}
+  .right .pr{font-size:16px}
+  .pager{margin-top:24px}
+  .sheet{top:50%;left:50%;right:auto;bottom:auto;transform:translate(-50%,-50%);width:min(640px,92vw);max-width:none;max-height:88vh;border-radius:20px;padding:28px 30px;
+         display:grid;grid-template-columns:minmax(0,1fr);column-gap:32px;align-content:start;animation:none}
+  .sheet:has(>.hero){width:min(920px,92vw);grid-template-columns:340px minmax(0,1fr)}
+  .sheet:has(>.hero)>*{grid-column:2}
+  .sheet>.grab{display:none}
+  .sheet:has(>.hero)>.hero{grid-column:1;grid-row:1/span 7;height:300px;margin:0}
+  .sheet h3{font-size:24px}
+  .big .pr{font-size:32px}
+  .sheet-x{display:block}
+  .sheet-x:hover{color:var(--yellow)}
+}
+.sheet[hidden],.sheet-bg[hidden]{display:none!important}
 </style>
 
 <div class="wrap">
   <header class="top">
     <div class="brandrow">
       <div class="logo">ALL<b>SKIDKA</b></div>
+      <nav class="links"><a href="https://t.me/allskidka_uz" target="_blank" rel="noopener" class="main">Kanalga obuna bo'lish</a><a href="https://t.me/Allskidkabot" target="_blank" rel="noopener">Bot</a></nav>
       <div class="asof" id="asof"></div>
     </div>
     <div class="filters">
@@ -235,7 +278,7 @@ function openSheet(sku){
   const x=items.find(i=>i.sku===sku); if(!x) return;
   const b=x.offers[0];
   const link=(o,txt)=>o.u?`<a href="${o.u}" target="_blank" rel="noopener">${txt}</a>`:txt;
-  $('#sheet').innerHTML = `<div class="grab"></div>
+  $('#sheet').innerHTML = `<div class="grab"></div><button class="sheet-x" type="button" aria-label="Yopish" onclick="closeSheet()">×</button>
     ${x.img?`<img class="hero" src="${x.img}" alt="" onerror="this.remove()">`:''}
     <div class="kicker">${katLabel(x)}${x.deal?' · eng arzon narx':''}</div>
     <h3>${x.t||x.sku}</h3>
