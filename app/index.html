@@ -212,8 +212,15 @@ const katLabel = x => KAT[x.cat] || CATN[x.cat] || '';
 
 $('#foot-stores').textContent = DATA.stores.join(', ');
 for (const s of DATA.stores){ const o=document.createElement('option'); o.value=s; o.textContent=s; $('#f-store').append(o); }
-const brands = [...new Set(items.map(x=>x.brand))].sort();
-for (const b of brands){ const o=document.createElement('option'); o.value=b; o.textContent=b; $('#f-brand').append(o); }
+// Brend ro'yxati - faqat tanlangan kategoriyadagi brendlar (soni bilan); "Boshqa" oxirida
+function fillBrands(){
+  const sel=$('#f-brand'), cur=sel.value, cnt={};
+  for (const x of items) if (inCat(x)) cnt[x.brand]=(cnt[x.brand]||0)+1;
+  const bs=Object.keys(cnt).sort((a,b)=>(a==='Boshqa')-(b==='Boshqa')||a.localeCompare(b));
+  sel.innerHTML='<option value="">Brend</option>'+bs.map(b=>`<option value="${b}">${b} (${cnt[b]})</option>`).join('');
+  sel.value = cnt[cur] ? cur : '';
+}
+fillBrands();
 
 const deals = allDeals;
 const maxSave = deals.reduce((m,x)=>Math.max(m,x.save),0);
@@ -266,9 +273,9 @@ function render(){
   renderStrip();
   for (const id of ['f-cat','f-brand','f-price','f-store']) $('#'+id).classList.toggle('on', !!$('#'+id).value);
 }
-['f-cat','f-brand','f-price','f-store'].forEach(id=>$('#'+id).addEventListener('change',()=>{page=0;render()}));
+['f-cat','f-brand','f-price','f-store'].forEach(id=>$('#'+id).addEventListener('change',()=>{if(id==='f-cat')fillBrands();page=0;render()}));
 $('#q').addEventListener('input',()=>{page=0;render()});
-$('#reset').addEventListener('click',()=>{$('#q').value='';$('#f-brand').value='';$('#f-price').value='';$('#f-store').value='';$('#f-cat').value='';page=0;render()});
+$('#reset').addEventListener('click',()=>{$('#q').value='';$('#f-brand').value='';$('#f-price').value='';$('#f-store').value='';$('#f-cat').value='';fillBrands();page=0;render()});
 // "Yana ko'rsatish": ro'yxatni qayta chizmaydi - faqat keyingi 10 tasini oxiriga qo'shadi
 function goPage(d){ page+=d; render();
   const top=document.querySelector('.top'), y=$('#list-title').getBoundingClientRect().top+scrollY-(top?top.offsetHeight:0)-8;
@@ -334,6 +341,7 @@ let tt; function toast(m){const t=$('#toast'); t.textContent=m; t.hidden=false; 
 const UP=new URLSearchParams(location.search);
 if (UP.get('cat') && CATN[UP.get('cat')]) $('#f-cat').value=UP.get('cat');
 if (UP.get('q')) $('#q').value=UP.get('q');
+fillBrands();
 render();
 if (UP.get('m')){ const x=items.find(i=>i.id===UP.get('m')); if(x) openSheet(x.sku); }
 </script>
