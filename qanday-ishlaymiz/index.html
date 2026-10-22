@@ -1,0 +1,165 @@
+<!doctype html><html lang="uz"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Qanday ishlaymiz — AllSkidka</title><meta name="description" content="AllSkidka har kuni 12 ta do'kon narxini solishtiradi, narx tarixi bilan soxta chegirmalarni ajratadi va narx tushsa xabar beradi. Bepul va mustaqil."><link rel="canonical" href="https://allskidka.uz/qanday-ishlaymiz/"><meta name="robots" content="index,follow"><meta property="og:type" content="website"><meta property="og:site_name" content="AllSkidka"><meta property="og:title" content="Qanday ishlaymiz — AllSkidka"><meta property="og:description" content="AllSkidka har kuni 12 ta do'kon narxini solishtiradi, narx tarixi bilan soxta chegirmalarni ajratadi va narx tushsa xabar beradi. Bepul va mustaqil."><meta property="og:url" content="https://allskidka.uz/qanday-ishlaymiz/"><meta property="og:image" content="https://allskidka.uz/og.png"><meta name="twitter:card" content="summary_large_image"><link rel="icon" type="image/png" href="/favicon.png"><link rel="apple-touch-icon" href="/icon-180.png"><meta name="theme-color" content="#0e0e0e"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=JetBrains+Mono:wght@500;700&display=swap"><style>
+:root{--ink:#0E0E0E;--ink2:#151513;--panel:#1A1A18;--line:#2C2B26;--yellow:#FFD400;--paper:#F4F2EA;--muted:#9C998C;--good:#3DDC84;
+--f:"Montserrat",system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,monospace}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ink);color:var(--paper);font:15px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif}
+a{color:inherit;text-decoration:none}
+.in{max-width:1400px;margin:0 auto;padding:0 16px}
+/* --- tepa panel --- */
+.hdr{position:sticky;top:0;z-index:20;background:var(--ink);border-bottom:1px solid var(--line)}
+.hdr .in{display:flex;align-items:center;gap:14px;padding-block:10px}
+.logo{font-family:var(--f);font-weight:900;font-size:26px;letter-spacing:-.5px;color:var(--yellow);white-space:nowrap}
+.sbox{flex:1;display:flex;position:relative;height:44px;border-radius:10px;background:var(--paper);min-width:0}
+.sbox select{border:0;background:#e3e0d5;color:var(--ink);font-weight:700;font-size:13px;padding:0 8px;border-radius:10px 0 0 10px;max-width:150px;cursor:pointer}
+.sbox input{flex:1;min-width:0;border:0;background:none;padding:0 12px;font-size:15px;color:var(--ink);outline:none}
+.sbox button{border:0;background:var(--yellow);width:54px;border-radius:0 10px 10px 0;cursor:pointer;font-size:20px;color:var(--ink)}
+.sbox:focus-within{box-shadow:0 0 0 3px rgba(255,212,0,.55)}
+.sug{position:absolute;top:48px;left:0;right:0;background:var(--paper);color:var(--ink);border-radius:10px;overflow:hidden;box-shadow:0 12px 30px rgba(0,0,0,.5)}
+.sug a{display:flex;justify-content:space-between;gap:12px;padding:9px 14px;font-size:14px;border-top:1px solid #e3e0d5}
+.sug a:hover,.sug a.on{background:#fff3b0}
+.sug b{font-family:var(--mono);white-space:nowrap}
+.hlinks{display:flex;gap:8px}
+.hlinks a{font-weight:800;font-size:13px;border:1px solid var(--line);border-radius:10px;padding:9px 12px;white-space:nowrap}
+.hlinks a.main{background:var(--yellow);color:var(--ink);border-color:var(--yellow)}
+/* --- kategoriyalar menyusi --- */
+.nav{background:var(--ink2);border-bottom:1px solid var(--line)}
+.nav .in{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;align-items:center;padding-block:4px}
+.nav .in::-webkit-scrollbar{display:none}
+.nav a{white-space:nowrap;font-weight:700;font-size:14px;padding:8px 12px;border-radius:8px;border:1px solid transparent}
+.nav a:hover{border-color:var(--paper)}
+.nav a.all{font-weight:900}
+.nav a.hot{color:var(--yellow)}
+.nav .asof{margin-left:auto;color:var(--muted);font-size:12px;font-family:var(--mono);white-space:nowrap;padding-left:12px}
+/* --- banner --- */
+.hero{position:relative;margin-top:18px;border-radius:20px;overflow:hidden;background:linear-gradient(110deg,#1d1c18 0%,#141412 60%);border:1px solid var(--line)}
+.slide{display:none;grid-template-columns:1.1fr 1fr;align-items:center;gap:24px;padding:34px 64px;min-height:340px}
+.slide.on{display:grid}
+.slide .k{font-family:var(--f);font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--yellow)}
+.slide .pc{font-family:var(--f);font-weight:900;font-size:76px;line-height:1;color:var(--yellow);letter-spacing:-2px;margin:8px 0 6px}
+.slide h2{font-family:var(--f);font-weight:800;font-size:28px;line-height:1.2;margin:0 0 12px}
+.slide .bp{font-family:var(--mono);font-weight:700;font-size:26px}
+.slide .bp small{font-family:var(--f);font-size:15px;color:var(--muted);margin-left:8px}
+.slide .nx{color:var(--muted);font-size:14px;margin-top:4px}
+.slide .go{display:inline-block;margin-top:18px;background:var(--yellow);color:var(--ink);font-weight:800;padding:12px 20px;border-radius:12px}
+.slide .pic{background:#fff;border-radius:18px;height:280px;display:grid;place-items:center;padding:18px}
+.slide .pic img{max-width:100%;max-height:244px;object-fit:contain}
+.dots{position:absolute;bottom:14px;left:64px;display:flex;gap:8px}
+.dots button{width:28px;height:5px;border-radius:3px;border:0;background:#4a4840;cursor:pointer;padding:0}
+.dots button.on{background:var(--yellow)}
+.hnav{position:absolute;top:50%;transform:translateY(-50%);width:40px;height:64px;border:0;background:rgba(0,0,0,.35);color:var(--paper);font-size:30px;cursor:pointer;border-radius:10px}
+.hnav.l{left:8px}.hnav.r{right:8px}
+/* --- raqamlar --- */
+.facts{display:flex;flex-wrap:wrap;gap:8px 28px;margin:18px 2px 0;color:var(--muted);font-size:14px}
+.facts b{color:var(--paper);font-family:var(--mono)}
+/* --- kategoriya kartochkalari --- */
+.tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:22px}
+.tile{background:var(--panel);border-radius:16px;padding:16px;display:flex;flex-direction:column;border:1px solid transparent}
+.tile:hover{border-color:var(--yellow)}
+.tile h3{font-family:var(--f);font-weight:800;font-size:19px;margin:0 0 10px}
+.tile .g{display:grid;grid-template-columns:1fr 1fr;gap:8px;flex:1}
+.tile .g span{background:#fff;border-radius:10px;height:110px;display:grid;place-items:center;padding:8px;overflow:hidden}
+.tile .g img{max-width:100%;max-height:94px;object-fit:contain}
+.tile .g small{display:block;text-align:center}
+.tile .f{display:flex;justify-content:space-between;margin-top:12px;font-size:13px;color:var(--muted)}
+.tile .f b{color:var(--yellow)}
+/* --- mahsulot qatorlari --- */
+.row{margin-top:30px;background:var(--ink2);border:1px solid var(--line);border-radius:16px;padding:16px 0 10px}
+.rh{display:flex;align-items:baseline;gap:16px;padding:0 16px}
+.rh h2{font-family:var(--f);font-weight:800;font-size:20px;margin:0}
+.rh a{color:var(--yellow);font-size:14px;font-weight:700}
+.rh a:hover{text-decoration:underline}
+.scroller{position:relative}
+.track{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:14px 16px 8px;scrollbar-width:thin;scrollbar-color:var(--yellow) transparent}
+.card{flex:0 0 200px;scroll-snap-align:start;display:flex;flex-direction:column;gap:3px}
+.card .ph{position:relative;background:#fff;border-radius:12px;height:190px;display:grid;place-items:center;padding:12px;margin-bottom:6px}
+.card .ph img{max-width:100%;max-height:166px;object-fit:contain;transition:transform .15s}
+.card:hover .ph img{transform:scale(1.04)}
+.card:hover .nm{color:var(--yellow)}
+.bdg{position:absolute;top:8px;left:8px;background:var(--yellow);color:var(--ink);font-weight:900;font-size:13px;padding:3px 7px;border-radius:7px;z-index:1}
+.card .ct{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--yellow)}
+.card .nm{font-weight:700;font-size:14px;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:2.6em}
+.card .pr{font-family:var(--mono);font-weight:700;font-size:17px}
+.card .st,.card .nx{font-size:12px;color:var(--muted)}
+.noimg{font-family:var(--f);font-weight:900;font-size:28px;color:#bbb}
+.arr{position:absolute;top:42%;transform:translateY(-50%);z-index:2;width:38px;height:70px;border:1px solid var(--line);background:rgba(14,14,14,.85);color:var(--paper);font-size:28px;border-radius:10px;cursor:pointer;display:none}
+.arr.l{left:4px}.arr.r{right:4px}
+.arr:hover{border-color:var(--yellow);color:var(--yellow)}
+/* --- pastki qism --- */
+.top-btn{display:block;text-align:center;background:#24231f;padding:14px;margin-top:40px;font-size:14px;font-weight:700}
+.top-btn:hover{background:#2c2b26}
+.foot .promise{color:var(--paper);font-weight:700;margin:18px 0 0}
+.foot{background:var(--ink2);border-top:1px solid var(--line);padding:30px 0 20px;font-size:14px}
+.cols{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px}
+.cols h4{font-family:var(--f);font-weight:800;font-size:15px;margin:0 0 10px;color:var(--paper)}
+.cols a{display:block;color:var(--muted);padding:3px 0}
+.cols a:hover{color:var(--yellow);text-decoration:underline}
+.about{color:var(--muted);font-size:13px;border-top:1px solid var(--line);margin-top:24px;padding-top:16px}
+.about h1{font-size:14px;color:var(--paper);margin:0 0 6px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (min-width:900px){.arr{display:block}.card{flex-basis:210px}}
+@media (max-width:899px){
+ .hdr .in{flex-wrap:wrap;gap:10px}.sbox{order:3;flex-basis:100%}.hlinks{margin-left:auto}
+ .sbox select{max-width:96px;font-size:12px}
+ .slide{grid-template-columns:1fr;padding:22px 20px 40px;min-height:0;gap:14px}.slide .pic{order:-1;height:200px}.slide .pic img{max-height:170px}
+ .slide .pc{font-size:54px}.slide h2{font-size:21px}.slide .bp{font-size:21px}.dots{left:20px}.hnav{display:none}
+ .tiles{grid-template-columns:1fr 1fr;gap:10px}.tile{padding:12px}.tile h3{font-size:15px}.tile .g span{height:74px}.tile .g img{max-height:60px}
+ .tile .f{flex-direction:column;gap:2px}
+ .card{flex-basis:160px}.card .ph{height:150px}.card .ph img{max-height:126px}
+ .cols{grid-template-columns:1fr 1fr}
+}
+@media (max-width:420px){.hlinks a.sec{display:none}}
+
+.how{max-width:860px;margin:26px auto 10px}
+.how h1{font-family:var(--f);font-weight:900;font-size:30px;line-height:1.15;margin:0 0 8px}
+.how h1 em{font-style:normal;color:var(--yellow)}
+.how .lead{color:#cfccc0;font-size:17px;margin:0 0 26px}
+.how h2{font-family:var(--f);font-weight:800;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:30px 0 12px}
+.steps{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.step,.why div{background:var(--panel);border-radius:16px;padding:16px;border:1px solid var(--line)}
+.step i{font-style:normal;display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--yellow);color:var(--ink);font-weight:900;font-family:var(--f)}
+.step b,.why b{display:block;font-family:var(--f);font-weight:800;font-size:16px;margin:10px 0 4px}
+.why b{margin-top:0}.step p,.why p{margin:0;color:#cfccc0;font-size:14px;line-height:1.5}
+.why{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.vds{display:grid;gap:8px}.vds p{margin:0;background:var(--panel);border-radius:12px;padding:10px 14px;border-left:5px solid;font-size:14px}
+.vds p b{font-family:var(--f)}.vds .g{border-color:#3DDC84}.vds .g b{color:#3DDC84}.vds .y{border-color:#FFD400}.vds .y b{color:#FFD400}
+.vds .r{border-color:#FF6B5A}.vds .r b{color:#FF6B5A}
+.how .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.how .cta a{text-decoration:none;font-weight:800;border-radius:12px;padding:12px 18px;border:1px solid var(--line)}
+.how .cta a.y{background:var(--yellow);color:var(--ink);border-color:var(--yellow)}
+</style><script src="https://telegram.org/js/telegram-web-app.js"></script></head><body><header class="hdr"><div class="in"><a class="logo" href="/">ALLSKIDKA</a><form class="sbox" id="sf" action="/qidiruv/" role="search"><select id="sc" name="cat" aria-label="Kategoriya"><option value="">Hammasi</option><option value="smartfon">Smartfonlar</option><option value="televizor">Televizorlar</option><option value="muzlatgich">Muzlatgichlar</option><option value="konditsioner">Konditsionerlar</option><option value="kir_yuvish">Kir yuvish mashinalari</option><option value="noutbuk">Noutbuklar</option></select><input id="sq" name="q" type="search" placeholder="Qidirish: Galaxy A57, MacBook, Artel…" autocomplete="off"><button type="submit" aria-label="Qidirish">⌕</button><div class="sug" id="sug" hidden></div></form><nav class="hlinks"><a class="main" href="https://t.me/allskidka_uz" target="_blank" rel="noopener">Kanalga obuna</a><a class="sec" href="https://t.me/Allskidkabot" target="_blank" rel="noopener">Bot</a></nav></div></header><nav class="nav"><div class="in"><a class="all" href="/qidiruv/">☰ Barchasi</a><a class="hot" href="/k/chegirmalar/">Bugungi chegirmalar</a><a href="/k/smartfonlar/">Smartfonlar</a><a href="/k/televizorlar/">Televizorlar</a><a href="/k/muzlatgichlar/">Muzlatgichlar</a><a href="/k/konditsionerlar/">Konditsionerlar</a><a href="/k/kir-yuvish-mashinalari/">Kir yuvish mashinalari</a><a href="/k/noutbuklar/">Noutbuklar</a><span class="asof">22.10.2026 holatiga</span></div></nav><main class="in"><div class="how"><h1>Haqiqiy chegirmalar — <em>12 ta do'kon</em>, har kuni</h1><p class="lead">AllSkidka do'konlar narxini solishtiradi va qaysi chegirma haqiqiy ekanini ko'rsatadi. Bepul.</p><h2>Qanday ishlaydi</h2><div class="steps"><div class="step"><i>1</i><b>Narxlarni yig'amiz</b><p>Har kuni 10:00 da 12 ta do'konning rasmiy saytidan narxlarni olamiz.</p></div><div class="step"><i>2</i><b>Tekshiramiz</b><p>Bir xil model, xotira va xususiyatlarni solishtiramiz. Shubhali narxlar chiqarilmaydi.</p></div><div class="step"><i>3</i><b>Narx tarixini ko'ramiz</b><p>Har bir narxni oldingi kunlar bilan solishtiramiz — chegirma rostmi, bilib olasiz.</p></div><div class="step"><i>4</i><b>Eng arzonini ko'rsatamiz</b><p>Narxlar har doim arzonidan qimmatiga. Narx tushsa — botimiz xabar beradi.</p></div></div><h2>Narx xulosasi nimani bildiradi</h2><div class="vds"><p class="g"><b>Eng past narx / Yaxshi narx</b> — oxirgi 30 kundagi eng past yoki o'rtachadan arzon. Olish uchun yaxshi vaqt.</p><p class="y"><b>Odatdagi narx</b> — 30 kunlik o'rtacha atrofida. Shoshilish shart emas.</p><p class="r"><b>Narx yuqori</b> — o'rtachadan qimmat. Kuting yoki "Narx tushsa xabar berish" ni bosing.</p></div><h2>Nega bizga ishonsa bo'ladi</h2><div class="why"><div><b>Biz hech narsa sotmaymiz</b><p>AllSkidka do'kon emas. Biz faqat solishtiramiz.</p></div><div><b>Pul tartibni o'zgartirmaydi</b><p>Hech bir do'kon pul to'lab yuqoriga chiqa olmaydi. Reklama bo'lsa — &quot;Reklama&quot; deb yoziladi.</p></div><div><b>Faqat rasmiy saytlar</b><p>Do'konlar: Alif Shop, Asaxiy, BeeMarket, Diskont, Glotr, Idea, Ishonch, Mediapark, Olcha, OpenShop, Radius, Texnomart. Narx do'kon saytidagidek.</p></div><div><b>Har narx sanasi bilan</b><p>Har bir narx qachon tekshirilganini ko'rsatamiz. Eski narxni bugungi deb ko'rsatmaymiz.</p></div></div><div class="cta"><a class="y" href="/k/chegirmalar/">Bugungi chegirmalar</a><a href="https://t.me/allskidka_uz" target="_blank" rel="noopener">Telegram kanal</a><a href="https://t.me/Allskidkabot" target="_blank" rel="noopener">Narx tushsa xabar — bot</a></div></div></main><a class="top-btn" href="#">↑ Yuqoriga qaytish</a><footer class="foot"><div class="in"><div class="cols"><div><h4>Kategoriyalar</h4><a href="/k/smartfonlar/">Smartfonlar</a><a href="/k/televizorlar/">Televizorlar</a><a href="/k/muzlatgichlar/">Muzlatgichlar</a><a href="/k/konditsionerlar/">Konditsionerlar</a><a href="/k/kir-yuvish-mashinalari/">Kir yuvish mashinalari</a><a href="/k/noutbuklar/">Noutbuklar</a></div><div><h4>Mashhur narxlar</h4><a href="/m/noutbuk-lenovo-82x7003krk/">15,6 Lenovo IdeaPad S 300 15IRU8 Arktik</a><a href="/m/smartfon-honor-x9c-smart-8-256gb/">Honor X9C Smart 8/256GB</a><a href="/m/smartfon-google-pixel-9a-8-128gb/">Google Pixel 9A 8/128GB</a><a href="/m/smartfon-samsung-galaxy-a06-6-128gb/">Samsung Galaxy A06 6/128GB</a><a href="/m/televizor-artel-43af90g/">Artel 43AF90G Full</a><a href="/m/televizor-samsung-qe55q8faa/">Samsung Vision AI QE55Q8FAAUXUZ</a><a href="/m/televizor-samsung-qe55qn90da/">Samsung QE55QN90DAUXUZ 55</a><a href="/m/televizor-haier-h55k85f/">Haier H55K85FUX Ultra</a></div><div><h4>Yana</h4><a href="/m/televizor-samsung-ue85u8000f/">Samsung UE85U8000FUX UltraHD</a><a href="/m/smartfon-google-pixel-9a-8-256gb/">Google Pixel 9A 8/256GB</a><a href="/m/televizor-toshiba-85c350ne/">Toshiba 85C350NE UltraHD</a><a href="/m/noutbuk-hp-15fd0356nia/">HP 15-fd0356nia Intel Core i5-1334U 8/512GB</a><a href="/k/chegirmalar/">Barcha chegirmalar</a></div><div><h4>AllSkidka</h4><a href="https://t.me/allskidka_uz" target="_blank" rel="noopener">Telegram kanal @allskidka_uz</a><a href="https://t.me/Allskidkabot" target="_blank" rel="noopener">Bot — narx tushsa xabar</a><a href="/app/">Mini app</a><a href="/qanday-ishlaymiz/">Qanday ishlaymiz</a></div></div><p class="promise">Biz hech narsa sotmaymiz. Narxlar tartibini hech kim pulga o'zgartira olmaydi — har doim arzonidan qimmatiga.</p><div class="about"><p style="color:#bdbdbd;font-weight:700;margin:0 0 6px">AllSkidka — O'zbekistondagi haqiqiy chegirmalar</p><p>Smartfon, televizor, muzlatgich, konditsioner, kir yuvish mashinasi va noutbuk narxlarini 12 ta do'kondan solishtiring. Narxlar 22.10.2026 holatiga. Do'konlar: Alif Shop, Asaxiy, BeeMarket, Diskont, Glotr, Idea, Ishonch, Mediapark, Olcha, OpenShop, Radius, Texnomart. Sotib olishdan oldin narxni do'kon saytida tekshiring.</p></div></div></footer><script>
+(function(){
+ var tg=window.Telegram&&Telegram.WebApp;
+ if(tg&&tg.initData){location.replace(window.TG_TO||('/app/'+location.search));return;}
+ // banner aylanishi
+ var sl=[].slice.call(document.querySelectorAll('.slide')),dt=[].slice.call(document.querySelectorAll('.dots button')),cur=0,tm;
+ function show(i){if(!sl.length)return;cur=(i+sl.length)%sl.length;sl.forEach(function(s,k){s.classList.toggle('on',k===cur)});dt.forEach(function(d,k){d.classList.toggle('on',k===cur)});}
+ function auto(){clearInterval(tm);tm=setInterval(function(){show(cur+1)},6000);}
+ dt.forEach(function(d,k){d.onclick=function(){show(k);auto()}});
+ var hl=document.querySelector('.hnav.l'),hr=document.querySelector('.hnav.r');
+ if(hl)hl.onclick=function(){show(cur-1);auto()}; if(hr)hr.onclick=function(){show(cur+1);auto()};
+ auto();
+ // qatorlarni strelka bilan surish
+ [].forEach.call(document.querySelectorAll('.scroller'),function(s){var t=s.querySelector('.track');
+  var al=s.querySelector('.arr.l'),ar=s.querySelector('.arr.r'); if(!al||!ar)return; al.onclick=function(){t.scrollBy({left:-t.clientWidth*0.9,behavior:'smooth'})};
+  ar.onclick=function(){t.scrollBy({left:t.clientWidth*0.9,behavior:'smooth'})};});
+ // qidiruv: yozganda takliflar (search.json - birinchi bosishda yuklanadi)
+ var f=document.getElementById('sf'),q=document.getElementById('sq'),c=document.getElementById('sc'),box=document.getElementById('sug'),IDX=null,sel=-1;
+ function load(){if(IDX)return;IDX=[];fetch('/search.json').then(function(r){return r.json()}).then(function(d){IDX=d;sug()}).catch(function(){});}
+ function esc(s){return s.replace(/[&<>"]/g,function(m){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]})}
+ function sug(){var v=q.value.trim().toLowerCase();sel=-1;if(v.length<2||!IDX||!IDX.length){box.hidden=true;return;}
+  var w=v.split(/\s+/),cat=c.value,out=[];
+  for(var i=0;i<IDX.length&&out.length<8;i++){var x=IDX[i];if(cat&&x[1]!==cat)continue;var n=x[0].toLowerCase();
+   if(w.every(function(p){return n.indexOf(p)>=0}))out.push(x);}
+  box.innerHTML=out.map(function(x){return '<a href="'+(x[3]?'/m/'+x[3]+'/':'/app/?m='+x[4])+'"><span>'+esc(x[0])+'</span><b>'+(x[2]/1e6).toFixed(2).replace('.',',')+' mln</b></a>'}).join('')
+   +'<a href="/qidiruv/?q='+encodeURIComponent(q.value.trim())+(cat?'&cat='+cat:'')+'"><span>Barcha natijalar: «'+esc(q.value.trim())+'»</span><b>→</b></a>';
+  box.hidden=false;}
+ q.addEventListener('focus',load);q.addEventListener('input',sug);c.addEventListener('change',sug);
+ q.addEventListener('keydown',function(e){var a=box.querySelectorAll('a');if(box.hidden||!a.length)return;
+  if(e.key==='ArrowDown'||e.key==='ArrowUp'){e.preventDefault();sel=(sel+(e.key==='ArrowDown'?1:-1)+a.length)%a.length;
+   [].forEach.call(a,function(x,k){x.classList.toggle('on',k===sel)});}
+  else if(e.key==='Enter'&&sel>=0){e.preventDefault();location.href=a[sel].getAttribute('href');}
+  else if(e.key==='Escape'){box.hidden=true;}});
+ document.addEventListener('click',function(e){if(!f.contains(e.target))box.hidden=true;});
+})();
+</script></body></html>
